@@ -6,3 +6,7 @@ Linkedin: https://www.linkedin.com/in/ruben-giro/\
 
 -------------
 
+**Natural Language Processing: Pytorch Sentiment analysis using pre-trained word embeddings.**
+Determines weather a tweet is postive, or negative
+
+[View the Jupyter Notebook](https://github.com/intel698/Portfolio/blob/main/nn_LSTM_Sentiment_analysis.ipynb)
