@@ -17,5 +17,5 @@ Determines weather a movie review is postive, or negative
 **Image recognition: Conv Neural Nets for image classification**
 Supervised learning image classification
 
-[View the Jupyter Notebook](https://github.com/intel698/Portfolio/blob/main/nn_Convnets.ipynb)
+[View the Jupyter Notebook](https://github.com/intel698/Portfolio/blob/main/nn_Convnets%20(1).ipynb)
 
