@@ -1,0 +1,99 @@
+-- P Gives you Entered and Functional
+
+With P_ledger as(
+SELECT GCC.SEGMENT1||'-'||GCC.SEGMENT3||currency_code "Key"
+,       GB.PERIOD_NAME
+,       ledger_id
+,      GCC.SEGMENT1||'-'||GCC.SEGMENT3 "Account"
+,      GB.CURRENCY_CODE
+,      SUM(( NVL(GB.PERIOD_NET_DR,0) + NVL(GB.BEGIN_BALANCE_DR,0))) - SUM(NVL(GB.PERIOD_NET_CR,0)+NVL(GB.BEGIN_BALANCE_CR,0))"Entered Bal"
+,      SUM(( NVL(GB.PERIOD_NET_DR_BEQ,0) + NVL(GB.BEGIN_BALANCE_DR_BEQ,0))) - SUM(NVL(GB.PERIOD_NET_CR_BEQ,0)+NVL(GB.BEGIN_BALANCE_CR_BEQ,0))"Functional BAL"
+FROM GL.GL_BALANCES GB, GL.GL_CODE_COMBINATIONS GCC
+WHERE GCC.CODE_COMBINATION_ID = GB.CODE_COMBINATION_ID
+AND  GB.ACTUAL_FLAG = 'A'
+AND  GB.TEMPLATE_ID IS NULL
+AND  (GB.PERIOD_NAME = 'Mar-15' or GB.PERIOD_NAME = 'Apr-15')
+AND GB.ledger_id = 2038
+and translated_flag = 'R'
+GROUP BY GB.PERIOD_NAME
+,      ledger_id
+,      GCC.SEGMENT1||'-'||GCC.SEGMENT3 
+,      GB.CURRENCY_CODE
+,      GB.Translated_flag
+
+
+Union
+
+SELECT  GCC.SEGMENT1||'-'||GCC.SEGMENT3||currency_code "Key"
+,       GB.PERIOD_NAME
+,       ledger_id
+,      GCC.SEGMENT1||'-'||GCC.SEGMENT3 "Account"
+,      GB.CURRENCY_CODE
+,      SUM(( NVL(GB.PERIOD_NET_DR_BEQ,0) + NVL(GB.BEGIN_BALANCE_DR_BEQ,0))) - SUM(NVL(GB.PERIOD_NET_CR_BEQ,0)+NVL(GB.BEGIN_BALANCE_CR_BEQ,0))"Functional BAL"
+,      SUM(( NVL(GB.PERIOD_NET_DR_BEQ,0) + NVL(GB.BEGIN_BALANCE_DR_BEQ,0))) - SUM(NVL(GB.PERIOD_NET_CR_BEQ,0)+NVL(GB.BEGIN_BALANCE_CR_BEQ,0))"Functional BAL"
+FROM GL.GL_BALANCES GB, GL.GL_CODE_COMBINATIONS GCC
+WHERE GCC.CODE_COMBINATION_ID = GB.CODE_COMBINATION_ID
+AND  GB.ACTUAL_FLAG = 'A'
+AND  GB.TEMPLATE_ID IS NULL
+AND  (GB.PERIOD_NAME = 'Mar-15' or GB.PERIOD_NAME = 'Apr-15')
+AND GB.ledger_id = 2038
+and translated_flag is null
+GROUP BY GB.PERIOD_NAME
+,      ledger_id
+,      GCC.SEGMENT1||'-'||GCC.SEGMENT3 
+,      GB.CURRENCY_CODE
+,      GB.Translated_flag
+),
+
+S_ledger as (
+SELECT GCC.SEGMENT1||'-'||GCC.SEGMENT3||currency_code "Key"
+,      GB.PERIOD_NAME
+,       ledger_id
+,      GCC.SEGMENT1||'-'||GCC.SEGMENT3 "Account2"
+,      GB.CURRENCY_CODE
+,       SUM(( NVL(GB.PERIOD_NET_DR,0) + NVL(GB.BEGIN_BALANCE_DR,0))) - SUM(NVL(GB.PERIOD_NET_CR,0)+NVL(GB.BEGIN_BALANCE_CR,0))"Entered Bal2"
+,      SUM(( NVL(GB.PERIOD_NET_DR_BEQ,0) + NVL(GB.BEGIN_BALANCE_DR_BEQ,0))) - SUM(NVL(GB.PERIOD_NET_CR_BEQ,0)+NVL(GB.BEGIN_BALANCE_CR_BEQ,0))"Functional BAL2"
+FROM GL.GL_BALANCES GB, GL.GL_CODE_COMBINATIONS GCC
+WHERE GCC.CODE_COMBINATION_ID = GB.CODE_COMBINATION_ID
+AND  GB.ACTUAL_FLAG = 'A'
+AND  GB.TEMPLATE_ID IS NULL
+AND  (GB.PERIOD_NAME = 'Mar-15' or GB.PERIOD_NAME = 'Apr-15')
+AND GB.ledger_id = 2298 
+and translated_flag = 'R'
+GROUP BY GB.PERIOD_NAME
+,      ledger_id
+,      GCC.SEGMENT1||'-'||GCC.SEGMENT3 
+,      GB.CURRENCY_CODE
+,      GB.Translated_flag
+
+
+
+Union
+
+SELECT GCC.SEGMENT1||'-'||GCC.SEGMENT3||currency_code "Key"
+,      GB.PERIOD_NAME
+,      ledger_id
+,      GCC.SEGMENT1||'-'||GCC.SEGMENT3 "Account2"
+,      GB.CURRENCY_CODE
+,      SUM(( NVL(GB.PERIOD_NET_DR_BEQ,0) + NVL(GB.BEGIN_BALANCE_DR_BEQ,0))) - SUM(NVL(GB.PERIOD_NET_CR_BEQ,0)+NVL(GB.BEGIN_BALANCE_CR_BEQ,0))"Functional BAL2"
+,      SUM(( NVL(GB.PERIOD_NET_DR_BEQ,0) + NVL(GB.BEGIN_BALANCE_DR_BEQ,0))) - SUM(NVL(GB.PERIOD_NET_CR_BEQ,0)+NVL(GB.BEGIN_BALANCE_CR_BEQ,0))"Functional BAL2"
+FROM GL.GL_BALANCES GB, GL.GL_CODE_COMBINATIONS GCC
+WHERE GCC.CODE_COMBINATION_ID = GB.CODE_COMBINATION_ID
+AND  GB.ACTUAL_FLAG = 'A'
+AND  GB.TEMPLATE_ID IS NULL
+AND  (GB.PERIOD_NAME = 'Mar-15' or GB.PERIOD_NAME = 'Apr-15')
+AND GB.ledger_id = 2298
+and translated_flag is null
+GROUP BY GB.PERIOD_NAME
+,      ledger_id
+,      GCC.SEGMENT1||'-'||GCC.SEGMENT3 
+,      GB.CURRENCY_CODE
+,      GB.Translated_flag
+
+)
+
+select P.PERIOD_NAME, P."Account", P.CURRENCY_CODE, P."Entered Bal", P."Functional BAL", S."Account2", S.CURRENCY_CODE,S."Entered Bal2", S."Functional BAL2"
+from s_ledger s full join p_ledger p
+on p."Key" = s."Key"
+where (nvl(P."Entered Bal",0)+nvl(P."Functional BAL",0)+nvl(S."Entered Bal2",0)+nvl(S."Functional BAL2",0)) != 0
+order by 4
