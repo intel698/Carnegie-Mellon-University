@@ -1,9 +1,9 @@
-# Data Science Portfolio - Carnegie Mellon University
-Projects I completed as a student in Data Analytics at Carnegie Mellon University.
 
 Email: **rgiro@alumni.cmu.edu**\
 Linkedin: https://www.linkedin.com/in/ruben-giro/\
 
+# 1 - Data Science Portfolio - Carnegie Mellon University
+Projects I completed as a student in Data Analytics at Carnegie Mellon University.
 
 
 -------------
@@ -19,13 +19,14 @@ Supervised learning image classification
 
 [View the Jupyter Notebook](https://github.com/intel698/Portfolio/blob/main/nn_Convnets%20(1).ipynb)
 
-# SQL Projects examples - Prior employment
+# 2 - SQL Examples
+Created in Oracle PROD ERP database. Ad-hoc queries, and ETL scripts to load datawarehouse  
 
 [Materialized view for rollup CUBE.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/CUBE%20-%20Ending%20balances.sql)
+[Apptio ETL load.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/Apptio%20ETL%20load.sql) \
 
 [AP Invoice lookups.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/AP%20Invoice.sql) \
 [AP Reconciliation.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/AP%20Reconciliation.sql) \
-[Apptio ETL load.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/Apptio%20ETL%20load.sql) \
 [Concur employee expenses on hold.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/Concur%20employee%20expenses%20onhold.sql) \
 [Concur makred as paid.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/Concur%20marked%20as%20paid.sql) \
 [Currency translation support.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/Currency%20translation.sql) \
