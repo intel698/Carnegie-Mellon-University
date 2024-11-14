@@ -19,7 +19,7 @@ Supervised learning image classification
 
 [View the Jupyter Notebook](https://github.com/intel698/Portfolio/blob/main/nn_Convnets%20(1).ipynb)
 
-# 2 - SQL Examples
+# 2 - SQL Examples (prior employment)
 Created in Oracle PROD ERP database. Ad-hoc queries, and ETL scripts to load datawarehouse  
 
 [Materialized view for rollup CUBE.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/CUBE%20-%20Ending%20balances.sql)
