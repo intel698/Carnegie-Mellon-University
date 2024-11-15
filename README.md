@@ -1,13 +1,13 @@
 
 Email: **rgiro@alumni.cmu.edu**\
-Linkedin: https://www.linkedin.com/in/ruben-giro/\
+Linkedin: https://www.linkedin.com/in/ruben-giro/
 
 # 1 - Data Science Portfolio - Carnegie Mellon University
 Projects I completed as a student in Data Analytics at Carnegie Mellon University.
 
 
 -------------
-<h2> Neural networks</h2>
+<h3> Neural networks</h3>
 
 **Natural Language Processing: Pytorch Sentiment analysis using pre-trained word embeddings.**\
 Determines weather a movie review is postive, or negative
@@ -23,7 +23,7 @@ Supervised learning image classification
 Created in Oracle PROD ERP database. Ad-hoc queries, and ETL scripts to load datawarehouse  
 
 [Materialized view for rollup CUBE.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/CUBE%20-%20Ending%20balances.sql) \
-[Apptio ETL load.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/Apptio%20ETL%20load.sql) \
+[Apptio ETL load.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/Apptio%20ETL%20load.sql)
 
 [AP Invoice lookups.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/AP%20Invoice.sql) \
 [AP Reconciliation.sql](https://github.com/intel698/Carnegie-Mellon-University/blob/main/SQL/AP%20Reconciliation.sql) \
