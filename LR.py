@@ -381,64 +381,34 @@ class stats(RegressionResultsWrapper):
 #%%
 
 
-import statsmodels.api as sm
+def main():
+    print("This runs only if executed directly.")
 
-# Load dataset
-data = sm.datasets.longley.load_pandas().data
+    if __name__ == "__main__":
+        main()
 
-# Define response and predictors
-y = data['TOTEMP']
-X = data.drop(columns='TOTEMP')
+    # Load dataset
+    data = sm.datasets.longley.load_pandas().data
 
-# Add constant
-X = sm.add_constant(X)
+    y = data['TOTEMP']
+    X = data.drop(columns='TOTEMP')
 
-# Fit OLS model
-model = sm.OLS(y, X).fit()
+    # Add constant
+    X = sm.add_constant(X)
 
-# View results
-print(model.summary())
+    # Fit OLS model
+    model = sm.OLS(y, X).fit()
 
-##  Demo  ###########################################
+    # View results
+    print(model.summary())
 
-wrap = stats(model)
+    ##  Demo  ###########################################
 
-wrap.print_summary()
-wrap.test_autocorrelation()
-wrap.test_normality()
-wrap.test_homoscedasticity()
+    wrap = stats(model)
 
-wrap.test_residuals()
+    wrap.print_summary()
+    wrap.test_autocorrelation()
+    wrap.test_normality()
+    wrap.test_homoscedasticity()
 
-# Constructed features  
-
-# df_raw = pd.read_csv(r'C:\data\boston_all.csv', parse_dates=['SOLD DATE'])
-# df_raw = pd.read_excel(r'C:\data\Boston_all.xlsx',  sheet_name='Boston')
-
-
-# relevant_columns = [ 'PRICE'
-#                     , 'BEDS'
-#                     , 'BATHS'
-#                     , 'SQUARE FEET'
-#                     , 'YEAR BUILT'
-#                     , 'ZIP'
-#                     , 'SOLD DATE']       
-
-# df_raw = df_raw[relevant_columns]
-# df_raw['parsed_dates'] = pd.to_datetime(df_raw['SOLD DATE']
-#                                           , errors='coerce'
-#                                           , infer_datetime_format=True)
-
-# df_raw.dropna(inplace=True)
-# df_raw['is_winter'] = df_raw['parsed_dates'].apply(lambda x: 1 if x.month in [12, 1, 2] else 0)
-# #df_raw['month'] = df_raw['Sold date'].dt.month
-
-
-# filter = (
-#     (df_raw['PRICE'] > 50000) & 
-#     (df_raw['PRICE'] < 2000000) &
-#     (df_raw['BEDS'] < 8 ) &
-#     (df_raw['BATHS'] > 0) 
-#     )
-
-
+    wrap.test_residuals()
